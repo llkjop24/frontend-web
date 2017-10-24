@@ -1,29 +1,23 @@
-
 <!doctype html>
 <html lang="kr">
-  <head>
-      <meta charset="UTF-8">
-      <title>문제소스</title>
-      <style>
-      .wrap{
-        border: 3px solid #ddd;
-      }
+<head>
+    <meta charset="UTF-8">
+    <title>Carousel</title>
+    <style media="screen">
 
-      .wrap > img {
-        margin:5px;
-      }
-
-      </style>
+    </style>
+</head>
+<body>
 
 
-  </head>
-  <body>
-    <div class="wrap"></div>
-    <button id="priv">이전</button>
-    <span id="page">1</span>/
-    <span id="totalpage">3</span>
-    <button id="next">다음</button>
-    <script src="Carousel.js"></script>
+  <div id="wrap"></div>
 
-  </body>
+  <button type="button" id="back">뒤로</button>
+  <span id="page">1</span>
+  <span>/</span>
+  <span id="totalpage">0</span>
+  <button type="button" id="next">다음</button>
+  <script src='Carousel.js'></script>
+
+</body>
 </html>

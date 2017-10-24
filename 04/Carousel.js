@@ -9,60 +9,57 @@ var todayPhoto = [
     ,{"url":"http://sports.media.daum.net/general/gallery/STARKIMYUNA/index.html","img":"http://icon.daumcdn.net/w/c/12/05/81727815537682839.jpeg","title":"&#39;교생&#39; 김연아, 스승의날에도 인기폭발","id":"20120516092003892"}
 ];
 
-  var page= 1;
-  var pageDom = document.getElementById('page');
-  var totalpageDom = document.getElementById('totalpage')
 
-  totalpageDom.innerHTML = todayPhoto.length / page;
 
-//3개를 뿌려보자
-function showList(){
+var page=0;
+var totalpage=Math.ceil(todayPhoto.length/3);
 
-  console.log('page');
+var pageDom = document.getElementById('page');
+var totalPageDom = document.getElementById('totalpage');
 
-   //1  0~3  2 = 3~6,  3 = 6~9
-  var start = 0;
-  var end =  3;
-  var listnum = 3;
 
-  start = (page-1) * listnum;
-  end = page * listnum;
+function showlist(){
 
-  //
-  // if(page == 1){
-  //   start = 0;
-  //   end = page*listnum;
-  // }
-  // else if(page===2){
-  //   start = 3;
-  //   end = 6;
-  // }
-  // else if(page ==3){
-  //     start= 6;
-  //     end = 9;
-  // }
-
-  var wrap = document.querySelector('.wrap');
+  var wrap = document.getElementById('wrap');
   var str = '';
 
-  for(var i=start; i<end; i++){
-      console.log(todayPhoto[i]);
+  for(var i=page*3; i<page*3+3; i++){
+    if(todayPhoto[i]){
       str += '<img src="'+todayPhoto[i].img+'"> ';
-  }
+    }
 
+
+  }
   wrap.innerHTML = str;
-  pageDom.innerHTML = page;
-  totalpageDaom.innerHTML = totalpage;
 }
 
+showlist();
 
-//버튼에 이벤트 주기
 var nextbtn = document.getElementById('next');
-var privbtn = document.getElementById('priv');
+var backbtn = document.getElementById('back');
+
 nextbtn.addEventListener('click', function(){
-
   console.log('next');
+  if(page < totalpage-1){
+    page++;
 
-  page++;
-  showList();
+    showlist();
+  }
+
+  pageDom.innerHTML = page+1;
+
 })
+
+backbtn.addEventListener('click', function(){
+  console.log('back');
+  if(page>0){
+    page--;
+
+    showlist();
+  }
+
+  pageDom.innerHTML = page+1;
+
+})
+
+totalPageDom.innerHTML = totalpage;
